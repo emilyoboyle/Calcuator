@@ -1,0 +1,99 @@
+<html>
+	<head>
+		<title>Javascript Calculator</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+        <script src="jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                var previousValue=0;
+                var operation = "";
+        $(".calculator-button").click(function(evt){
+           var trigger= evt.target;
+            triggerText=$(trigger)[0].innerText;
+            console.log(triggerText)
+            if(!isNaN(triggerText)){
+                $("#calculator-screen")[0].value = $("#calculator-screen")[0].value + triggerText;
+            }else if(triggerText == "="){
+            
+                    value=Number($("#calculator-screen")[0].value);
+                    result = eval(previousValue+operation+value)
+                   //result=previousValue+value;
+                    console.log(result);
+                    $("#calculator-screen")[0].value = result ;
+            }else{
+                previousValue = Number($("#calculator-screen")[0].value);
+                $("#calculator-screen")[0].value = "";
+                operation = triggerText;
+                console.log("text")
+            }
+        
+            });
+            });
+        </script>
+	</head>
+	<body>
+		<div class="content">
+			<div class="calculator">
+				<input id="calculator-screen" readonly>
+				<table class="calculator-buttons">	
+					<tr>
+						<td>	
+                            <button id="button" class="calculator-button">7</button>
+						</td>
+						<td>	
+                            <button class="calculator-button">8</button>
+						</td>
+						<td>	
+                            <button class="calculator-button">9</button>
+						</td>
+						<td>	
+							<button class="calculator-button">&#247;</button>
+						</td>		
+					</tr>
+					<tr>
+						<td>	
+                            <button class="calculator-button">4</button>
+						</td>
+						<td>	
+                            <button class="calculator-button">5</button>
+						</td>
+						<td>	
+                            <button class="calculator-button">6</button>
+						</td>
+						<td>	
+							<button class="calculator-button">*</button>
+						</td>	
+					</tr>
+					<tr>
+						<td>	
+                            <button class="calculator-button">1</button>
+						</td>
+						<td>	
+                            <button class="calculator-button">2</button>
+						</td>
+						<td>	
+                            <button class="calculator-button">3</button>
+						</td>
+						<td>	
+							<button class="calculator-button">-</button>
+						</td>	
+					</tr>
+					<tr>
+						<td>	
+                            <button class="calculator-button">0</button>
+						</td>
+						<td>	
+                            <button class="calculator-button"></button>
+						</td>
+						<td>	
+                            <button class="calculator-button">+</button>
+						</td>
+						<td>	
+							<button class="calculator-button" style="background-color:orange">=</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
